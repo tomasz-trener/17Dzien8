@@ -19,16 +19,23 @@ namespace P03ZarzanieKontrolkami
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var kontrolki = Controls;
+            List<Control> controls = new List<Control>();
+            foreach (Control item in Controls)
+                controls.Add(item);
+            controls.Add(this);
 
-            foreach (Control item in kontrolki)
+
+            //var kontrolki = Controls;
+            //kontrolki.Add(this);
+            foreach (Control item in controls)
             {
                 if (!(item is Button))
                 {
-                    item.Visible = false;
+                    
+                    //item.Visible = false;
                 }
                 
-               // MessageBox.Show(item.Name);
+                MessageBox.Show(item.Name);
             }
 
             //textBox1.Visible = false;
