@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\GrupaKraj.cs" />
+    <Compile Include="Domain\ZawodnicyResult.cs" />
     <Compile Include="Domain\Zawodnik.cs" />
     <Compile Include="Exceptions\NiebezpiecznyKodException.cs" />
     <Compile Include="FrmStartowy.cs">

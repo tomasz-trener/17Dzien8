@@ -6,13 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace P02AplikacjaZawodnicy.Repositories
 {
     internal class ZawodnicyRepository
     {
-        public Zawodnik[] PodajZawodnikow(string filtr, int nrStrony, int wieloscStrony)
+        public ZawodnicyResult PodajZawodnikow(string filtr, int nrStrony, int wieloscStrony)
         {
+            ZawodnicyResult zr = new ZawodnicyResult();
+
             ModelBazyDataContext db = new ModelBazyDataContext();
             filtr = filtr.ToLower();
             ZawodnikDB[] zawodnicy;
@@ -24,10 +27,14 @@ namespace P02AplikacjaZawodnicy.Repositories
                     x.imie.ToLower().Contains(filtr) ||
                     x.nazwisko.ToLower().Contains(filtr) ||
                     x.kraj.ToLower().Contains(filtr) ||
-                    (x.data_ur != null && x.data_ur.Value.ToString("ddMMyyyy").Contains(filtr)) ||
+                   (x.data_ur != null && x.data_ur.Value.ToString("ddMMyyyy").Contains(filtr)) ||
                     x.waga.ToString().Contains(filtr) ||
                     x.wzrost.ToString().Contains(filtr)
                     ).ToArray();
+            // w momencie musimy tę wartośc policzyc 
+
+            int liczbaElementwow = zawodnicy.Length;
+            zr.MaksymalnaLiczbaElementow = liczbaElementwow;
 
             zawodnicy= zawodnicy.Skip(wieloscStrony * (nrStrony - 1)).Take(wieloscStrony).ToArray();
 
@@ -46,7 +53,8 @@ namespace P02AplikacjaZawodnicy.Repositories
                     DataUrodzenia = zawodnicy[i].data_ur
                 };
             }
-            return wynik;
+            zr.Zawodnicy = wynik;
+            return zr;
         }
 
         public void Edytuj(Zawodnik z)

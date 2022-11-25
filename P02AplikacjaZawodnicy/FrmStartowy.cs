@@ -59,8 +59,15 @@ namespace P02AplikacjaZawodnicy
             int nrStrony = Convert.ToInt32(numStrona.Value);
             int wielkoscStrony = 4;
 
-            lbDane.DataSource = zr.PodajZawodnikow(txtSzukaj.Text,nrStrony,wielkoscStrony);
+            ZawodnicyResult wynik = zr.PodajZawodnikow(txtSzukaj.Text, nrStrony, wielkoscStrony);
+            lbDane.DataSource = wynik.Zawodnicy;
             lbDane.DisplayMember = "DaneRaportowe";
+
+
+
+            decimal maksStrona = Math.Ceiling(wynik.MaksymalnaLiczbaElementow / Convert.ToDecimal(wielkoscStrony));
+            lblLiczbaStron.Text = maksStrona.ToString();
+            numStrona.Maximum = maksStrona;
         }
 
         private void btnSzczegoly_Click(object sender, EventArgs e)
