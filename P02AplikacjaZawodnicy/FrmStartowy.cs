@@ -63,8 +63,6 @@ namespace P02AplikacjaZawodnicy
             lbDane.DataSource = wynik.Zawodnicy;
             lbDane.DisplayMember = "DaneRaportowe";
 
-
-
             decimal maksStrona = Math.Ceiling(wynik.MaksymalnaLiczbaElementow / Convert.ToDecimal(wielkoscStrony));
             lblLiczbaStron.Text = maksStrona.ToString();
             numStrona.Maximum = maksStrona;
