@@ -160,7 +160,18 @@ namespace P01WstepLINQ
 
             int maksWzrost3 = dane.Select(x => x.Wzrost).OrderByDescending(x => x).ToArray()[0];
 
+            //  Zawodnik z = dane.Where(x=>x.Wzrost==maksWzrost1).FirstOrDefault();
+            Zawodnik zw = dane.FirstOrDefault(x => x.Wzrost == maksWzrost1);
 
+            Zawodnik[] wynik9= dane.Where(x => x.Waga == zw.Waga - 1).ToArray();
+
+            // to samo ale w 1 kroku
+
+            Zawodnik[] wynik10 = dane
+                .Where(x => x.Waga == dane
+                    .FirstOrDefault(y => y.Wzrost == dane
+                        .Select(z => z.Wzrost).Max()).Waga - 1)
+                .ToArray();
 
 
             Console.ReadKey();
