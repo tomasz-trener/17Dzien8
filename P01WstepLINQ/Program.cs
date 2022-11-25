@@ -70,11 +70,14 @@ namespace P01WstepLINQ
             }).ToArray();
 
             foreach (var z in wynik5)
-                Console.WriteLine(z.Imie + " " + z.Nazwisko + " " + z.Kraj + " "+ z.BMI);
+                // Console.WriteLine(z.Imie + " " + z.Nazwisko + " " + z.Kraj + " "+ String.Format("{0:0.00}", z.BMI));
+                Console.WriteLine(z.Imie + " " + z.Nazwisko + " " + z.Kraj + " " + Math.Round(z.BMI,2));
 
             Console.ReadKey();
             // dodaj do zawodnika mini właściwość BMI i ją uzupełnij 
 
+            //select imie, nazwisko, kraj, waga/ power(wzrost / 100.0, 2) as bmi
+            //from zawodnicy
         }
     }
 }
