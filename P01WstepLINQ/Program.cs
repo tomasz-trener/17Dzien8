@@ -173,7 +173,12 @@ namespace P01WstepLINQ
                         .Select(z => z.Wzrost).Max()).Waga - 1)
                 .ToArray();
 
-
+            /*
+             *  select * 
+                 from zawodnicy
+                 where waga = (select waga  
+                 from zawodnicy 
+                 where wzrost = (select max(wzrost) from zawodnicy)) -1 */
             Console.ReadKey();
         }
     }
