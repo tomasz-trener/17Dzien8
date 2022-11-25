@@ -50,7 +50,7 @@ namespace P01WstepLINQ
                where nazwisko like '%a' and wzrost > waga*2 and month(data_ur) > 6
                order by kraj, len(imie), wzrost desc
                */
-            string[] wynik4 = dane
+            var wynik4 = dane
               .Where(x => x.Nazwisko.ToLower().EndsWith("a") &&
                       x.Wzrost > x.Waga * 2 &&
                       x.DataUrodzenia.Month > 6
@@ -60,7 +60,10 @@ namespace P01WstepLINQ
               .ThenByDescending(x => x.Wzrost)
               .Select(x=>x.Nazwisko + ' ' + x.Imie)
               .ToArray();
+            // dodaj do zawodnika mini właściwość BMI i ją uzupełnij 
 
+            //select imie, nazwisko, kraj, waga/ power(wzrost / 100.0, 2) as bmi
+            //from zawodnicy
             ZawodnikMini[] wynik5 = dane.Select(x => new ZawodnikMini()
             {
                 Imie = x.Imie,
@@ -73,11 +76,44 @@ namespace P01WstepLINQ
                 // Console.WriteLine(z.Imie + " " + z.Nazwisko + " " + z.Kraj + " "+ String.Format("{0:0.00}", z.BMI));
                 Console.WriteLine(z.Imie + " " + z.Nazwisko + " " + z.Kraj + " " + Math.Round(z.BMI,2));
 
-            Console.ReadKey();
-            // dodaj do zawodnika mini właściwość BMI i ją uzupełnij 
+            // Console.ReadKey();
 
-            //select imie, nazwisko, kraj, waga/ power(wzrost / 100.0, 2) as bmi
-            //from zawodnicy
+
+            // przygotuj zestaw obiektów zawierjacych pole "ImieNazwisko" oraz Współczynnik 
+            // określonyjako suma wagi i wzrostu. 
+
+
+            var wynik6= dane.Select(x => new
+            {
+                ImieNazwisko = x.Imie + " " + x.Nazwisko,
+                Wspolczynnik = x.Waga + x.Wzrost,
+                Zagadka = x.Waga>x.Wzrost
+            }).ToArray();
+
+            //foreach (var jakisZawodnik in wynik6)
+            //    Console.WriteLine(jakisZawodnik.ImieNazwisko + " " + jakisZawodnik.Wspolczynnik);
+
+            int wspolczynnik = wynik6[wynik6.Length - 1].Wspolczynnik;
+
+            // grupowanie
+
+            var wynik7 = dane.GroupBy(x => x.Kraj).Select(x => new
+            {
+                MojKraj = x.Key, 
+                SredniWZrost = x.Average(y=>y.Wzrost)
+            }).ToArray();
+
+            // jakiego typu jest wynik ? tablica obiektów anonimowych , co do których wiemy , że
+            // kazy element tej tablicy to obiekt anonimowy, który posiada właściwosći : "MojKraj" i "SredniWzrost"
+
+            foreach (var g in wynik7)
+            {
+                Console.WriteLine(g.MojKraj + " " + g.SredniWZrost);
+            }
+
+            
+
+            Console.ReadKey();
         }
     }
 }
