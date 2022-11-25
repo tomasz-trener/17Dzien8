@@ -45,7 +45,7 @@ namespace P02AplikacjaZawodnicy
             txtImie.Text = zawodnik.Imie;
             txtNazwisko.Text = zawodnik.Nazwisko;
             txtKrajZawodnika.Text = zawodnik.Kraj;
-            txtDataUr.Text = zawodnik.DataSformatowana;
+            dtpDataUr.Value = zawodnik.DataUrodzenia;
             txtWzrost.Text = zawodnik.Wzrost.ToString();
             txtWaga.Text = zawodnik.Waga.ToString();
         }
@@ -96,11 +96,12 @@ namespace P02AplikacjaZawodnicy
             zawodnik.Imie = txtImie.Text;
             zawodnik.Nazwisko = txtNazwisko.Text;
             zawodnik.Kraj = txtKrajZawodnika.Text;
-            
-            if (string.IsNullOrEmpty(txtDataUr.Text))
-                zawodnik.DataUrodzenia = null;
-            else
-                zawodnik.DataUrodzenia = Convert.ToDateTime(txtDataUr.Text);
+
+            zawodnik.DataUrodzenia = dtpDataUr.Value;
+            //if (string.IsNullOrEmpty(txtDataUr.Text))
+            //    zawodnik.DataUrodzenia = null;
+            //else
+            //    zawodnik.DataUrodzenia = Convert.ToDateTime(txtDataUr.Text);
 
             zawodnik.Waga = Convert.ToInt32(txtWaga.Text);
             zawodnik.Wzrost = Convert.ToInt32(txtWzrost.Text);

@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="Repositories\ZawodnicySQLRepository.cs" />
     <Compile Include="Repositories\ZawodnicyRepository.cs" />
+    <Compile Include="UserControls\NullableDateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NullableDateTimePicker.Designer.cs">
+      <DependentUpon>NullableDateTimePicker.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmStartowy.resx">
       <DependentUpon>FrmStartowy.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +98,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\NullableDateTimePicker.resx">
+      <DependentUpon>NullableDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

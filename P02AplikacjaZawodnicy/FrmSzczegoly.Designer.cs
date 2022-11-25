@@ -34,7 +34,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtWzrost = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtDataUr = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtKrajZawodnika = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,17 +42,18 @@
             this.txtImie = new System.Windows.Forms.TextBox();
             this.btnZapisz = new System.Windows.Forms.Button();
             this.btnUsun = new System.Windows.Forms.Button();
+            this.dtpDataUr = new P02AplikacjaZawodnicy.UserControls.NullableDateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpDataUr);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtWaga);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtWzrost);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtDataUr);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtKrajZawodnika);
             this.groupBox1.Controls.Add(this.label4);
@@ -107,13 +107,6 @@
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Data urodzenia";
-            // 
-            // txtDataUr
-            // 
-            this.txtDataUr.Location = new System.Drawing.Point(6, 168);
-            this.txtDataUr.Name = "txtDataUr";
-            this.txtDataUr.Size = new System.Drawing.Size(193, 20);
-            this.txtDataUr.TabIndex = 6;
             // 
             // label5
             // 
@@ -183,6 +176,13 @@
             this.btnUsun.UseVisualStyleBackColor = true;
             this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
+            // dtpDataUr
+            // 
+            this.dtpDataUr.Location = new System.Drawing.Point(9, 168);
+            this.dtpDataUr.Name = "dtpDataUr";
+            this.dtpDataUr.Size = new System.Drawing.Size(190, 21);
+            this.dtpDataUr.TabIndex = 12;
+            // 
             // FrmSzczegoly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,7 +208,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtWzrost;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDataUr;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtKrajZawodnika;
         private System.Windows.Forms.Label label4;
@@ -217,5 +216,6 @@
         private System.Windows.Forms.TextBox txtImie;
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.Button btnUsun;
+        private UserControls.NullableDateTimePicker dtpDataUr;
     }
 }
